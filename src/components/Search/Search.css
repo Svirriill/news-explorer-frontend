@@ -1,0 +1,124 @@
+.search {
+    display: flex;
+    width: 608px;
+    margin: auto;
+    padding: 80px 0;
+    flex-direction: column;
+}
+
+.search__title {
+    font-family: Roboto Slab, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 64px;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.search__info {
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #FFFFFF;
+    padding: 32px 0 64px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.search__form {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 100px;
+}
+
+.search__input {
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    height: 64px;
+    width: 544px;
+    margin: 0;
+    border: none;
+    border-radius: 100px;
+    padding-left: 24px;
+}
+
+.search__button {
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    width: 168px;
+    height: 66px;
+    background: #2F71E5;
+    box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    color: white;
+    border: none;
+    border-radius: 100px;
+}
+
+.search__button:hover {
+    background-color: #347EFF;
+}
+
+.search__button:active {
+    background-color: #2A65CC;
+}
+
+@media screen and (max-width: 1400px) {
+    .search {
+        padding: 38px 0 48px;
+        max-width: 448px;
+    }
+    .search__title {
+        font-size: 36px;
+        line-height: 40px;
+    }
+    .search__input {
+        height: 56px;
+    }
+    .search__button {
+        height: 56px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .search__info {
+        padding: 0;
+        margin: 16px 0 48px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .search {
+        width: min-content;
+    }
+    .search__form {
+        flex-direction: column;
+    }
+    .search__input {
+        width: 272px;
+        margin-bottom: 16px;
+    }
+    .search__button {
+        width: 288px;
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .search__info {
+        margin-bottom: 122px;
+    }
+}
