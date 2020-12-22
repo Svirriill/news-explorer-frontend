@@ -1,0 +1,45 @@
+.header {
+    border-bottom: 1px solid #d1d2d6;
+}
+
+.header__container {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1232px;
+    padding: 0 104px;
+}
+
+.header__title {
+    font-family: Roboto Slab, Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    cursor: pointer;
+    color: #1A1B22;
+}
+
+.header__light {
+    color: #FFFFFF;
+    z-index: 3;
+}
+
+@media screen and (max-width: 1410px) {
+    .header__container {
+        max-width: 688px;
+        padding: 0;
+        min-height: 66px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header__container {
+        max-width: 288px;
+    }
+    .header__title {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
