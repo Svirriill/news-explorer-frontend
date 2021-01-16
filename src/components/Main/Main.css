@@ -1,23 +1,83 @@
-.main__background {
-    background-image: url(../../images/header.jpg);
-    
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-    position: relative;
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    align-items: center;
 }
 
-@media screen and (max-width: 1000px) {
-    .main__background {
-        background-attachment: inherit;
-        background-size: cover;
+.main::after {
+    content: '';
+    position: absolute;
+    top: 80px;
+    left: 0;
+    opacity: 0.2;
+    height: 0;
+    width: 100%;
+}
+
+.main:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-height: 592px;
+    height: 100%;
+    width: 100%;
+    background-image: url('../../images/header.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.main__overlay-button {
+    display: flex;
+    width: 100%;
+    background-color: #f5f6f7;
+}
+
+.main__show {
+    width: 288px;
+    height: 64px;
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    align-self: center;
+    background-color: white;
+    border: none;
+    border-radius: 50px;
+    margin: 0 auto 20px;
+}
+
+.main__show:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1400px) {
+    .main:before {
+        height: 500px;
+    }
+    .main__show {
+        height: 56px;
+        margin-bottom: 40px;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .main__background {
-        background-position: center;
-        object-position: center;
-        object-fit: contain;
+    .main:before {
+        height: 526px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .main__show {
+        margin-bottom: 32px;
+    }
+    .main:before {
+        height: 540px;
     }
 }

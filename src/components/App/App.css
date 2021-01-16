@@ -7,3 +7,24 @@
     margin: 0 auto;
     color: #1A1B22;
 }
+
+ 
+.page_image {
+    background-image: url(../../images/header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+} 
+
+.page_image::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0px;
+    bottom: 0px;
+    background: #000;
+    opacity: 0.5;
+    z-index: -1;
+    transition: 0.5s linear;
+}

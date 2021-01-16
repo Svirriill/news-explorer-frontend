@@ -1,30 +1,31 @@
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
+import { NavLink, useLocation } from 'react-router-dom';
 import './Header.css';
 
 const Header = (props) => {
-  const { checkPage, toggleForm, isSaved, name, isPopupOpen } = props;
+  const { loggedIn, handleLoginOut, openLogin } = props;
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const handleBurger = () => {
     setIsMenuOpen(!isMenuOpen)
   }
 
+  const { pathname } = useLocation();
 
   return (
-    <div className='header'>
-      <div className='header__container'>
-        <h2 className={`header__title ${checkPage ? 'header__light' : ''} ${isMenuOpen ? 'header__light' : ''}`}>NewsExplorer</h2>
+      <div className={`header ${pathname === "/" ? 'header_image' : ''}`}>
+        <NavLink className='header__title-link' to='/'>
+          <h2 className={`header__title ${pathname === '/' ? 'header__light' : ''} ${isMenuOpen ? 'header__dark' : ''}`}>NewsExplorer</h2>
+        </NavLink>
         <Navigation
-          checkPage={checkPage}
-          toggleForm={toggleForm}
-          isSaved={isSaved}
-          name={name}
-          isPopupOpen={isPopupOpen} 
-          handleBurger={handleBurger}
+          loggedIn={loggedIn}
+          pathname={pathname}
           isMenuOpen={isMenuOpen}
+          handleLoginOut={handleLoginOut}
+          onClick={openLogin}
+          handleBurger={handleBurger}
         />
       </div>
-    </div >
   );
 }
 

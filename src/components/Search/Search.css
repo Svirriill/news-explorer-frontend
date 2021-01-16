@@ -1,7 +1,7 @@
 .search {
     display: flex;
     width: 608px;
-    margin: auto;
+    margin: 0 auto;
     padding: 80px 0;
     flex-direction: column;
 }
@@ -29,8 +29,6 @@
 }
 
 .search__form {
-    display: flex;
-    flex-direction: row;
     position: relative;
     box-sizing: border-box;
     border-radius: 100px;
@@ -42,8 +40,8 @@
     font-weight: normal;
     font-size: 16px;
     line-height: 22px;
-    height: 64px;
-    width: 544px;
+    height: 58px;
+    width: inherit;
     margin: 0;
     border: none;
     border-radius: 100px;
@@ -57,11 +55,11 @@
     font-size: 18px;
     line-height: 24px;
     width: 168px;
-    height: 66px;
+    min-height: 58px;
     background: #2F71E5;
     box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
     position: absolute;
-    bottom: 0px;
+    bottom: 16px;
     right: 0px;
     color: white;
     border: none;
@@ -114,11 +112,12 @@
     .search__button {
         width: 288px;
         position: relative;
+        margin: 0 16px;
     }
 }
 
 @media screen and (max-width: 450px) {
     .search__info {
-        margin-bottom: 122px;
+        margin-bottom: 70px;
     }
 }

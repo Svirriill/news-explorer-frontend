@@ -1,60 +1,69 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Main.css';
-import Header from '../Header/Header';
 import Search from '../Search/Search';
+import NotFound from '../NotFound/NotFound';
 import About from '../About/About';
 import NewsCardList from '../NewsCardList/NewsCardList';
-import Footer from '../Footer/Footer';
-import Register from '../Register/Register';
-import Login from '../Login/Login';
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import Preloader from '../Preloader/Preloader';
+import { NewsContext } from '../../contexts/NewsContext';
 
 const Main = (props) => {
-    const { isRegister, setIsRegister, isConfirmOpen, isLoginOpen, setIsLoginOpen, setIsConfirmOpen } = props;
-    const toggleLoginForm = () => {
-        setIsLoginOpen(!isLoginOpen);
-    };
+    const {
+        loggedIn,
+        handleSearch,
+        isSearch,
+        onCardClick,
+        onShowMore,
+        currentRow,
+        isError,
+        isLoading,
+        pathname
+    } = props;
 
-    const toggleRegisterForm = () => {
-        setIsRegister(!isRegister);
-    };
+  const { news, savedNews } = useContext(NewsContext);
 
-    const toggleConfirmForm = () => {
-        setIsConfirmOpen(!isConfirmOpen);
-    };
+  const newsToRender = news.slice(0, (currentRow + 1) * 3);
 
     return (
-        <>
-            <div className='main__background'>
-                <Header
-                    checkPage={true}
-                    isPopupOpen={isLoginOpen}
-                    toggleForm={toggleLoginForm}
-                />
-                <Search />
-            </div>
-            <NewsCardList main={true} />
+        <section className='main'>
+            <Search handleSearch={handleSearch} isLoading={isLoading} />
+            {
+                isLoading && (<Preloader />)
+            }
+            {
+                isSearch && <>
+                    {
+                        newsToRender.length ? (<>
+                            <NewsCardList
+                                newsToRender={newsToRender}
+                                loggedIn={loggedIn}
+                                savedNews={savedNews}
+                                onCardClick={onCardClick}
+                                currentRow={currentRow} 
+                                pathname={pathname}/>
+                            {
+                                newsToRender.length !== news.length &&
+                                <div className='main__overlay-button'>
+                                <button onClick={onShowMore} className='main__show'>Показать еще</button>
+                                </div>
+                            }
+                        </>) : <NotFound />
+                    }
+                </>
+            }
+            {
+                isError && (<div>
+                    <div className='not-found'>
+                        <h3 className='preloader__title'>Во время запроса произошла ошибка.</h3>
+                        <p className='preloader__paragraph'>
+                            Возможно, проблема с соединением или сервер недоступен.
+                        Подождите немного и попробуйте ещё раз</p>
+                    </div>
+                </div>)
+            }
             <About />
-            <Footer />
-            <Login
-                isPopupOpen={isLoginOpen}
-                toggleForm={toggleLoginForm}
-                setIsRegisterOpen={setIsRegister}
-
-            />
-            <Register
-                isPopupOpen={isRegister}
-                toggleForm={toggleRegisterForm}
-                setIsLoginOpen={setIsLoginOpen}
-
-            />
-            <PopupWithForm
-                isPopupOpen={isConfirmOpen}
-                toggleForm={toggleConfirmForm}
-                setIsLoginOpen={setIsLoginOpen}
-            />
-        </>
-    );
+        </section>
+    )
 }
 
 export default Main;

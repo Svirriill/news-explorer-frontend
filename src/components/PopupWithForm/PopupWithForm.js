@@ -2,37 +2,29 @@ import React from 'react';
 import './PopupWithForm.css';
 
 const PopupWithForm = (props) => {
-    const { isPopupOpen, toggleForm, setIsLoginOpen } = props;
-
-    React.useEffect(() => {
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && isPopupOpen) {
-                toggleForm();
-            }
-        });
-    }, [toggleForm, isPopupOpen]);
-
-    function handleClose(e) {
-        if (e.target.classList.contains('popup')) {
-            toggleForm();
-        }
-    }
-
-    const handleLink = () => {
-        setIsLoginOpen(true);
-        toggleForm();
-    };
-
+    const { name, isOpen, title, children, onClose, onChange, onSubmit, disabled, submitButtonText, isFormValid } = props;
     return (
-        <div onClick={handleClose}
-            className={`popup popup_login ${isPopupOpen ? '' : 'popup_hidden'}`}>
-            <form className={'popup__container popup__container_login'} >
-                <button onClick={toggleForm} className={'popup__close popup__close_login'} type='button' />
-                <h2 className={'popup__title'}>Пользователь успешно зарегистрирован!</h2>
-                <span onClick={handleLink} className='popup__link'>Войти</span>
+        <section
+            className={`popup popup_${name} ${isOpen ? '' : 'popup_hidden'}`}>
+            <form onSubmit={onSubmit} name={name} className={'popup__container popup__container_login'} >
+                {children}
+                <button onClick={onClose} className={'popup__close popup__close_login'} type='button' />
+                <h2 className={'popup__title'}>{title}</h2>
+                {name !== 'tooltip' &&
+                    <>
+                        <button
+                            className={`popup__button ${disabled && 'popup__button_active'}`}
+                            onClick={onSubmit}
+                            disabled={!isFormValid}>
+                            {submitButtonText}
+                        </button>
+                    </>
+                }
+                <span className='popup__subtitle'>{name !== 'tooltip' && 'или '}
+                    <span className='popup__link' onClick={onChange}>
+                        {name === 'login' ? 'Зарегистрироваться' : 'Войти'}</span></span>
             </form>
-
-        </div >
+        </section >
     );
 };
 

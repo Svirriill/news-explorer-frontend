@@ -1,14 +1,12 @@
 import React from 'react';
 import './Preloader.css';
-function Preloader({ isContent }) {
-    const logoClass = (isContent) ? 'preloader-spin' : 'preloader-logo';
-    const textClass = (isContent) ? 'Идет поиск новостей...' : 'К сожалению по вашему запросу ничего не найдено.';
+
+function Preloader() {
     return (
-        <section className="preloader">
-            <i className={logoClass} />
-            {(isContent) ? '' : <h3 className="preloader__title">Ничего не найдено</h3>}
-            <p className="preloader__text">{textClass}</p>
-        </section>
+        <div className="preloader">
+            <i className="preloader__spin"></i>
+            <p className="preloader__text">Идет поиск новостей...</p>
+        </div>
     );
 }
 

@@ -14,6 +14,10 @@
     padding: 8px 29px 15px;
 }
 
+.nav__border:hover {
+    cursor: pointer;
+    opacity: .7;
+}
 .nav__border_dark {
     border: 1px solid black;
 }
@@ -30,7 +34,6 @@
     line-height: 24px;
     text-decoration: none;
     color: black;
-    cursor: pointer;
 }
 
 .nav__link {
@@ -44,6 +47,11 @@
     color: black;
     cursor: pointer;
     align-self: baseline;
+}
+
+.nav__link:hover {
+    cursor: pointer;
+    opacity: .7;
 }
 
 .nav__link_active {
@@ -69,13 +77,23 @@
 }
 
 .nav__logout {
-    background-image: url(../../images/logout_dark.svg);
-    background-position: center;
-    background-repeat: no-repeat;
     width: 24px;
     height: 24px;
     margin-left: 23px;
 }
+
+.nav__logout_dark {
+    background-image: url(../../images/logout_dark.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.nav__logout_light {
+    background-image: url(../../images/logout_light.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 @media screen and (max-width: 1410px) {
     .nav__link {
         font-size: 16px;
@@ -100,6 +118,7 @@
 @media screen and (max-width: 600px) {
     .nav {
         display: none;
+        position: relative;
     }
     .nav__button {
         display: flex;
@@ -110,7 +129,10 @@
         width: 24px;
         height: 24px;
         transition: all 0.5s;
-        z-index: 5;
+        z-index: 10;
+    }
+    .nav__link {
+        align-self: center;
     }
     .nav__link_active {
         border: none;
