@@ -6,7 +6,7 @@ const dateFrom = new Intl.DateTimeFormat(DATE_LOCALES, DATE_OPTIONS).format(Date
 const dateTo = new Intl.DateTimeFormat(DATE_LOCALES, DATE_OPTIONS).format(Date.now());
 
 export const NEWS_API = {
-  baseUrl: ' https://newsapi.org/v2/everything',
+  baseUrl: 'https://nomoreparties.co/news/v2/everything',
   from: `from=${dateFrom}`,
   to: `to=${dateTo}`,
   pageSize: 'pageSize=100',

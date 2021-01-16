@@ -22,13 +22,15 @@ const Navigation = (props) => {
                 <span className={`nav__button-line ${pathname === '/' ? '' : 'nav__button-line_black'} ${isMenuOpen ? 'nav__button-line_esc nav__button-line_white' : ''}`}></span>
                 <span className={`nav__button-line ${pathname === '/' ? '' : 'nav__button-line_black'} ${isMenuOpen ? 'nav__button-line_esc nav__button-line_white' : ''}`}></span>
             </div>
-            <nav onClick={handleBurger} className={isMenuOpen ? 'nav nav_visible' : 'nav'}>
+            <nav className={isMenuOpen ? 'nav nav_visible' : 'nav'}>
                 <Link
+                    onClick={handleBurger}
                     linkClassName={`nav__link ${(pathname === '/') && 'nav__light nav__link_active_light-theme'} ${isMenuOpen && 'nav__light'} `}
                     activeLinkClassName='nav__link_active'
                     path='/'>Главная</Link>
                 {loggedIn &&
                     <Link
+                        onClick={handleBurger}
                         linkClassName={`nav__link ${(pathname === '/' || isMenuOpen) ? 'nav__light' : ''}`}
                         activeLinkClassName='nav__link_active'
                         path='/saved-news'>Сохраненные статьи</Link>
@@ -38,7 +40,7 @@ const Navigation = (props) => {
                     className={`nav__border ${pathname === '/' ? 'nav__light' : 'nav__border_dark'} 
     ${isMenuOpen ? 'nav__border_light' : ''} `}
                 >
-                    <span className={`nav__border-link ${(isMenuOpen || pathname === '/') ? 'nav__light' : ''}`} >
+                    <span onClick={handleBurger} className={`nav__border-link ${(isMenuOpen || pathname === '/') ? 'nav__light' : ''}`} >
                         {loggedIn ? currentUser.name : 'Авторизоваться'}
                     </span>
                     {
