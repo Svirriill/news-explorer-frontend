@@ -1,2 +1,4 @@
 # News-explorer-frontend
-### Этап 3: Верстка и jsx
+### Этап 4: функциональность на «Реакте» и JS
+
+**https://svdiplom.students.nomoreparties.xyz** - домен фронтенда

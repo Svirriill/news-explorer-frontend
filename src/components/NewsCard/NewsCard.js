@@ -60,7 +60,6 @@ function NewsCard(props) {
                     <p className="newsCard__date">{fullDate}</p>
                     <h1 className="newsCard__title">{title}</h1>
                     <p className="newsCard__text">{description}</p>
-                    {/* <a href={url} className="newsCard__source" target="_blank" rel="noreferrer">{pathname === '/' ? source.name : source}</a> */}
                     <p className="newsCard__source">{pathname === '/' ? source.name : source}</p>
                 </div>
             </a>

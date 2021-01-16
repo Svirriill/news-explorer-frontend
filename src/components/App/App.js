@@ -53,7 +53,7 @@ const App = () => {
     React.useEffect(() => {
         const localStorageNews = JSON.parse(localStorage.getItem('news'));
         if (localStorageNews && localStorageNews.length) {
-            // setNews(localStorageNews);
+            setNews(localStorageNews);
             setIsSearch(true);
         }
     }, []);
@@ -155,13 +155,13 @@ const App = () => {
             .catch((err) => setError(err.message))
             .finally(() => setDisabled(false));
     };
-// функция возврата сохранненых карточек
+
     function getSavedNews() {
         mainApi.getSavedNews()
             .then((news) => setSavedNews(news.data))
             .catch(err => console.log(`Ошибка при загрузке сохранённых новостей: ${err.message}`));
     };
-// функция сохранения карточки
+
     function handleArticleSave(article) {
         if (!loggedIn) return setIsRegister(true);
         const saved = savedNews.find((i) => i.publishedAt === article.publishedAt && i.title === article.title);
