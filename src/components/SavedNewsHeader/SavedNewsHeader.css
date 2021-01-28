@@ -1,5 +1,7 @@
 .news {
-    padding: 40px 104px 56px;
+    padding: 40px 0 56px;
+    margin: 0 auto;
+    max-width: 1440px;
 }
 
 .news__info {

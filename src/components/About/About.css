@@ -53,7 +53,7 @@
 @media screen and (max-width: 1000px) {
     .about {
         max-width: 688px;
-        margin: 40px auto;
+        margin: 120px auto 40px;
     }
     .about__container-image {
         width: 232px;
